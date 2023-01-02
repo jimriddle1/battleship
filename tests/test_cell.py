@@ -5,12 +5,17 @@ from lib.cell import Cell
 import unittest
 
 class CellTest(unittest.TestCase):
-    # def setUp(self):
-    #     self.ship = Ship("Cruiser", 3)
 
     def test_instantiate(self):
         cell_1 = Cell("B4")
-        # breakpoint()
         self.assertEqual(cell_1.coordinate, 'B4')
         self.assertEqual(cell_1.ship, None)
-        self.assertEqual(cell_1.empty, True)
+        self.assertEqual(cell_1.is_empty, True)
+
+    def test_place_ship(self):
+        cell_1 = Cell("B4")
+        ship_1 = Ship("Cruiser", 3)
+        cell_1.place_ship(ship_1)
+        # breakpoint()
+        self.assertEqual(cell_1.ship, ship_1)
+        self.assertEqual(cell_1.is_empty, False)

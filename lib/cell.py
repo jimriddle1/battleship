@@ -1,10 +1,9 @@
 class Cell:
   def __init__(self, coordinate):
     self.coordinate = coordinate
-    self.empty = True
+    self.is_empty = True
     self.ship = None
-  #
-  # def hit(self):
-  #   self.health = self.health - 1
-  #   if self.health == 0:
-  #      self.sunk = True
+
+  def place_ship(self, input_ship):
+    self.ship = input_ship
+    self.is_empty = False
