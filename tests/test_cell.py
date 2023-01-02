@@ -10,6 +10,7 @@ class CellTest(unittest.TestCase):
 
     def test_instantiate(self):
         cell_1 = Cell("B4")
-        self.assertEqual(cell_1.coordinate, "B4")
-        self.assertEqual(cell_1.coordinate, None)
+        # breakpoint()
+        self.assertEqual(cell_1.coordinate, 'B4')
+        self.assertEqual(cell_1.ship, None)
         self.assertEqual(cell_1.empty, True)
