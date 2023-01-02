@@ -10,3 +10,5 @@ import unittest
 NUMBER_1 = 3.0
 NUMBER_2 = 2.0
 FAILURE = 'incorrect value'
+
+#extra comment
