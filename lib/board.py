@@ -26,3 +26,6 @@ class Board:
     'D4' : Cell('A4'),
     }
     return board
+
+  def is_valid_coordinate(self, input_string):
+      return input_string in self.cells
