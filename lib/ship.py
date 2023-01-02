@@ -5,13 +5,5 @@ class Ship:
     self.health = length
     self.sunk = False
 
-cruiser = Ship("Cruiser", 3)
-
-print(cruiser.name)
-print(cruiser.sunk)
-
-# breakpoint()
-
-cruiser.sunk = True
-
-print(cruiser.sunk)
+  def hit():
+      
