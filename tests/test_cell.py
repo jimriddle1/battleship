@@ -16,6 +16,15 @@ class CellTest(unittest.TestCase):
         cell_1 = Cell("B4")
         ship_1 = Ship("Cruiser", 3)
         cell_1.place_ship(ship_1)
-        # breakpoint()
         self.assertEqual(cell_1.ship, ship_1)
         self.assertEqual(cell_1.is_empty, False)
+
+    def test_fired_upon(self):
+        cell_1 = Cell("B4")
+        ship_1 = Ship("Cruiser", 3)
+        cell_1.place_ship(ship_1)
+        self.assertEqual(cell_1.fired_upon, False)
+        self.assertEqual(cell_1.ship.health, 3)
+        cell_1.fire_upon()
+        self.assertEqual(cell_1.fired_upon, True)
+        self.assertEqual(cell_1.ship.health, 2)
