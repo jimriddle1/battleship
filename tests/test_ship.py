@@ -3,11 +3,6 @@ import sys
 from lib.ship import Ship
 import unittest
 
-NUMBER_1 = 3.0
-NUMBER_2 = 2.0
-FAILURE = 'incorrect value'
-
-
 class ShipTest(unittest.TestCase):
     # def setUp(self):
     #     self.ship = Ship("Cruiser", 3)
