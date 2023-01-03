@@ -26,6 +26,10 @@ class Board:
     }
     return board
 
+  def place(self, input_ship, location_list):
+      for i in location_list:
+          self.cells[i].place_ship(input_ship)
+
   def is_valid_coordinate(self, input_string):
       return input_string in self.cells
 
