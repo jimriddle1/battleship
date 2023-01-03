@@ -38,6 +38,8 @@ class Board:
          return False
       elif self.check_consecutive_list(ship, input_list) == False:
          return False
+      elif self.check_overlapping(input_list) == False:
+         return False
       else:
          return True
 
@@ -63,3 +65,10 @@ class Board:
         return True
       else:
         return False
+
+  def check_overlapping(self, input_list):
+      for i in input_list:
+          if self.cells[i].is_empty == False:
+              return False
+
+      return True
