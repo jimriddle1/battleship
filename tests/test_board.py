@@ -62,3 +62,11 @@ class ShipTest(unittest.TestCase):
 
         board.place(cruiser, ["A1", "A2", "A3"])
         self.assertEqual(board.is_valid_placement(sub, ["A1", "B1"]), False)
+
+    def test_rendering_board(self):
+        board = Board()
+        cruiser = Ship("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+        self.assertEqual(board.render(), "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+        self.assertEqual(board.render(True), "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
