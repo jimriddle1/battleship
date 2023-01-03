@@ -51,6 +51,5 @@ class CellTest(unittest.TestCase):
         cell_2.fire_upon()
         cell_2.fire_upon()
 
-        # breakpoint()
         self.assertEqual(cell_2.ship.health, 0)
         self.assertEqual(cell_2.render(), 'X')
