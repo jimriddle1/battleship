@@ -54,3 +54,11 @@ class ShipTest(unittest.TestCase):
         self.assertEqual(cell_3.ship, cruiser)
 
         self.assertEqual(cell_1.ship, cell_2.ship)
+
+    def test_overlapping_ships(self):
+        board = Board()
+        cruiser = Ship("Cruiser", 3)
+        sub = Ship("Submarine", 2)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+        self.assertEqual(board.is_valid_placement(sub, ["A1", "B1"]), False)
