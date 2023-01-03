@@ -1,5 +1,6 @@
 from lib.cell import Cell
 from lib.ship import Ship
+import math
 
 class Board:
   def __init__(self):
@@ -72,3 +73,24 @@ class Board:
               return False
 
       return True
+
+  def render(self, input_boolean = False):
+      output_string = "  1 2 3 4 \nA q r s t \nB v w x y \nC z . . . \nD . . . . \n"
+      listed_string = list(output_string)
+      listed_string[13] = self.cells["A1"].render(input_boolean)
+      listed_string[15] = self.cells["A2"].render(input_boolean)
+      listed_string[17] = self.cells["A3"].render(input_boolean)
+      listed_string[19] = self.cells["A4"].render(input_boolean)
+      listed_string[24] = self.cells["B1"].render(input_boolean)
+      listed_string[26] = self.cells["B2"].render(input_boolean)
+      listed_string[28] = self.cells["B3"].render(input_boolean)
+      listed_string[30] = self.cells["B4"].render(input_boolean)
+      listed_string[35] = self.cells["C1"].render(input_boolean)
+      listed_string[37] = self.cells["C2"].render(input_boolean)
+      listed_string[39] = self.cells["C3"].render(input_boolean)
+      listed_string[41] = self.cells["C4"].render(input_boolean)
+      listed_string[46] = self.cells["D1"].render(input_boolean)
+      listed_string[48] = self.cells["D2"].render(input_boolean)
+      listed_string[50] = self.cells["D3"].render(input_boolean)
+      listed_string[52] = self.cells["D4"].render(input_boolean)
+      return "".join(listed_string)
