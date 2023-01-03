@@ -31,22 +31,25 @@ class CellTest(unittest.TestCase):
 
     def test_render(self):
         cell_1 = Cell("B4")
-        self.assertEqual(cell_1.render, '.')
+        self.assertEqual(cell_1.render(), '.')
 
         cell_1.fire_upon()
-        self.assertEqual(cell_1.render, 'M')
+
+        self.assertEqual(cell_1.render(), 'M')
 
         cell_2 = Cell("C2")
         ship_1 = Ship("Cruiser", 3)
         cell_2.place_ship(ship_1)
 
-        self.assertEqual(cell_2.render, 'S')
+        self.assertEqual(cell_2.render(), '.')
+        self.assertEqual(cell_2.render(True), 'S')
 
         cell_2.fire_upon()
-        self.assertEqual(cell_2.render, 'H')
+        self.assertEqual(cell_2.render(), 'H')
         self.assertEqual(cell_2.ship.health, 2)
 
         cell_2.fire_upon()
         cell_2.fire_upon()
+
         self.assertEqual(cell_2.ship.health, 0)
-        self.assertEqual(cell_2.render, 'X')
+        self.assertEqual(cell_2.render(), 'X')
