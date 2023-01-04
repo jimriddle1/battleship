@@ -17,10 +17,66 @@ class Game:
       return True
     elif input_1 == "p":
       self.setup_game()
-      # self.take_turn()
+      self.take_turn()
     else:
       print("Please Enter a Valid Character\n\n")
       self.start_game()
+
+  def take_turn(self):
+    if self.computer_board.render().count('X') == 5:
+      print("You Won! Congrats")
+      print("=============COMPUTER BOARD=============\n")
+      print(self.computer_board.render())
+      print("=============PLAYER BOARD=============\n")
+      print(self.player_board.render(True))
+    elif self.player_board.render().count('X') == 5:
+      print("I Won, Mwhaha")
+      print("=============COMPUTER BOARD=============\n")
+      print(self.computer_board.render())
+      print("=============PLAYER BOARD=============\n")
+      print(self.player_board.render(True))
+    else:
+      print("=============COMPUTER BOARD=============\n")
+      print(self.computer_board.render())
+      print("=============PLAYER BOARD=============\n")
+      print(self.player_board.render(True))
+      self.player_shot()
+      self.computer_shot()
+      self.take_turn()
+
+  def computer_shot(self):
+      computer_cord = random.choice(list(self.computer_board.cells))
+      if self.player_board.cells[computer_cord].render() != ".":
+        # print("This is for debugging - tried to shoot here already")
+        self.computer_shot()
+      else:
+        targeted_cell = self.player_board.cells[computer_cord]
+        targeted_cell.fire_upon()
+        if targeted_cell.render() == "M":
+          print("I missed")
+        elif targeted_cell.render() == "H":
+          print("I hit a ship!")
+        else:
+          print("I sunk a ship!")
+
+  def player_shot(self):
+      print("Enter the coordinate for your shot\n")
+      player_input_cord = input()
+      if self.player_board.is_valid_coordinate(player_input_cord) == False:
+        print("That coordinate doesn't exist, please try again")
+        self.player_shot()
+      elif (self.computer_board.cells[player_input_cord].render() != "."):
+        print("You have already shot in that coordinate, please try again")
+        self.player_shot()
+      else:
+        targeted_cell = self.computer_board.cells[player_input_cord]
+        targeted_cell.fire_upon()
+        if targeted_cell.render() == "M":
+          print("You missed")
+        elif targeted_cell.render() == "H":
+          print("You hit a ship!")
+        else:
+          print("You sunk a ship!")
 
   def setup_game(self):
     print("I (the computer) will now place my two boats on my side of the board\n\n")
@@ -50,7 +106,6 @@ class Game:
     else:
       print("Please enter valid Coordinates\n")
       self.place_player_sub()
-
 
   def place_computer_boats(self):
     coordinate_list = []

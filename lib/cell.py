@@ -17,13 +17,13 @@ class Cell:
        self.fired_upon = True
 
   def render(self, input_boolean = False):
-    if input_boolean and (self.is_empty == False):
-      return "S"
-    elif self.is_empty and self.fired_upon:
+    if self.is_empty and self.fired_upon:
       return "M"
     elif (self.is_empty == False) and self.fired_upon:
       if self.ship.health <= 0:
         return "X"
       return "H"
+    elif input_boolean and (self.is_empty == False):
+      return "S"
     else:
       return "."
