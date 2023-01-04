@@ -19,12 +19,38 @@ class Game:
       self.setup_game()
       # self.take_turn()
     else:
-      print("Please Enter a Valid Character")
+      print("Please Enter a Valid Character\n\n")
       self.start_game()
 
   def setup_game(self):
-    print("I (the computer) will now place my two boats on my side of the board")
+    print("I (the computer) will now place my two boats on my side of the board\n\n")
     self.place_computer_boats()
+
+    self.place_player_cruiser()
+    self.place_player_sub()
+
+  def place_player_cruiser(self):
+    print("Now tell me where you want to place the Cruiser (3 Coordinates)")
+    cruiser_coordinates = input().split()
+    ship = Ship("Cruiser", 3)
+
+    if self.player_board.is_valid_placement(ship, cruiser_coordinates) == True:
+      self.player_board.place(ship, cruiser_coordinates)
+    else:
+      print("Please enter valid Coordinates\n")
+      self.place_player_cruiser()
+
+  def place_player_sub(self):
+    print("Now tell me where you want to place the Sub (2 Coordinates)")
+    cruiser_coordinates = input().split()
+    ship = Ship("Sub", 2)
+
+    if self.player_board.is_valid_placement(ship, cruiser_coordinates) == True:
+      self.player_board.place(ship, cruiser_coordinates)
+    else:
+      print("Please enter valid Coordinates\n")
+      self.place_player_sub()
+
 
   def place_computer_boats(self):
     coordinate_list = []

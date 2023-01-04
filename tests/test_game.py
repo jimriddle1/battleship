@@ -14,11 +14,17 @@ class GameTest(unittest.TestCase):
         self.assertEqual(type(game.player_board), type(Board()))
         self.assertEqual(type(game.computer_board), type(Board()))
 
-    # def test_start_game(self):
-    #     game = Game()
-    #     game.start_game()
+    def test_start_game(self):
+        game = Game()
+        game.start_game()
 
     def test_place_computer_boats(self):
         game = Game()
         game.place_computer_boats()
         self.assertEqual(game.computer_board.render(True).count('S'), 5)
+
+    # def test_place_player_boats(self):
+    #     game = Game()
+    #     game.place_player_cruiser()
+    #     print(game.player_board.render(True))
+        # self.assertEqual(game.computer_board.render(True).count('S'), 5)
