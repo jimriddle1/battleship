@@ -35,6 +35,10 @@ class Board:
       return input_string in self.cells
 
   def is_valid_placement(self, ship, input_list):
+      # breakpoint()
+      for i in input_list:
+         if self.is_valid_coordinate(i) == False:
+             return False
       if ship.length != len(input_list):
          return False
       elif self.check_consecutive_list(ship, input_list) == False:
